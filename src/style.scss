@@ -1,0 +1,820 @@
+/* ========================================================================== */
+/*  PROJECT: Portfolio Layout Styles                                          */
+/*  DESCRIPTION: Responsive layout and typography with consistent spacing.    */
+/*  NOTE: Do NOT alter variable values without updating layout breakpoints.   */
+/* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/*  ROOT VARIABLES                                                            */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  /* ===== Spacing Scale ===== */
+  --space-1: 0.25rem; /* 4px  – micro gap, icon padding, tiny adjustments */
+  --space-2: 0.5rem; /* 8px  – tight spacing, between small elements */
+  --space-3: 0.75rem; /* 12px – compact spacing for text blocks */
+  --space-4: 1rem; /* 16px – base spacing (default margin/padding) */
+  --space-5: 1.5rem; /* 24px – section padding or group separation */
+  --space-6: 1.75rem; /* 28px - slightly bigger spacing */
+  --space-7: 2rem; /* 32px – large spacing (main content gaps) */
+  --space-8: 3rem; /* 48px – major section spacing */
+  --space-9: 4rem; /* 64px – extra large padding (hero sections) */
+  --space-10: 5rem; /* 80px - hero gap, hero top, main padding-bottom */
+  --space-11: 10rem; /* 160px - main content gap */
+  --space-1a: 0.35rem; /* img/thumb margin */
+  --space-6a: 1.85rem; /* intro h2 margin-bottom */
+  --space-8a: 3.5rem; /* experience/projects list gap */
+  --space-9a: 4.5rem; /* #experience/#work/#projects padding-top */
+
+  /* ===== Colors ===== */
+  --color-primary: #101a2b;
+  --color-accent: #93a7bc;
+  --color-accent2: #5de7d1;
+  --color-light: #e3e9f1;
+  --color-light2: #d2dae5;
+  --color-dark: rgba(46, 214, 193, 0.11);
+  --color-dark2: rgba(31, 42, 61, 0.52);
+  --color-dark3: rgba(255, 255, 255, 0.1);
+  --color-dark4: rgba(255, 255, 255, 0.2);
+  --color-muted: #354458;
+  --color-offset-shadow: 0 0 #0000;
+  --color-inset-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  GLOBAL ELEMENT RESET & BASE STYLES                                        */
+/* -------------------------------------------------------------------------- */
+
+html {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+
+  color-scheme: light dark;
+  color: var(--color-accent);
+  background-color: var(--color-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  TYPOGRAPHY                                                                */
+/* -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-light);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: var(--space-5);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+}
+
+p {
+  margin-bottom: var(--space-5);
+  margin-top: 0;
+}
+
+strong {
+  color: var(--color-light2);
+  font-weight: normal;
+}
+
+small {
+  font-size: 0.9rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  LAYOUT UTILITIES                                                          */
+/* -------------------------------------------------------------------------- */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.col {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+}
+
+.with-link {
+  cursor: pointer;
+  position: relative;
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  a.link {
+    color: var(--color-light);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    .arrow {
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &::before {
+    content: ' ';
+    background: var(--color-dark2);
+    position: absolute;
+    left: calc(var(--space-4) * -1);
+    right: calc(var(--space-4) * -1);
+    top: calc(var(--space-4) * -1);
+    bottom: calc(var(--space-4) * -1);
+    border-radius: 10px;
+    box-shadow:
+      var(--color-offset-shadow, 0 0 #0000), var(--color-offset-shadow, 0 0 #0000),
+      var(--color-inset-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    a.link {
+      color: var(--color-accent2);
+
+      .arrow {
+        transform: translate(5px, -5px);
+      }
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  PAGE STRUCTURE: MAIN, HEADER, FOOTER                                      */
+/* -------------------------------------------------------------------------- */
+
+#main {
+  @extend .row;
+  gap: var(--space-11);
+}
+
+header {
+  @extend .col;
+  flex: 1 1 35%;
+  position: relative;
+}
+
+main {
+  @extend .col;
+  flex: 1 1 65%;
+  padding-bottom: var(--space-10);
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-5);
+  align-items: center;
+
+  small {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  BUTTONS & INTERACTIONS                                                    */
+/* -------------------------------------------------------------------------- */
+
+.buttons {
+  margin: var(--space-8) 0 0;
+}
+
+.button {
+  background: none;
+  border: 1px solid var(--color-light);
+  border-radius: 10px;
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.5;
+
+  span {
+    color: var(--color-light);
+    transition: color 0.5s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    z-index: 1;
+    transition: all 0.5s ease;
+    border-radius: 100px;
+    background-color: var(--color-light);
+  }
+
+  &::before {
+    transform: translate(-100%, -120%);
+  }
+
+  &::after {
+    transform: translate(0%, 50%);
+  }
+
+  &:hover {
+    span {
+      color: var(--color-primary);
+    }
+
+    &::before {
+      transform: translate(-25%, -25%);
+    }
+
+    &::after {
+      transform: translate(-75%, -25%);
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  ICON LISTS & TAGS (PILLS)                                                 */
+/* -------------------------------------------------------------------------- */
+
+ul.icons {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+
+  li {
+    height: 32px;
+  }
+
+  a {
+    color: var(--color-light);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  .label {
+    display: none;
+  }
+}
+
+ul.pills {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+
+  li {
+    background: var(--color-dark);
+    color: var(--color-accent2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    padding: var(--space-1) var(--space-3);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  NAV SECTION                                                               */
+/* -------------------------------------------------------------------------- */
+
+nav {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: var(--space-2) var(--space-4);
+      text-transform: uppercase;
+      border-right: 1px solid var(--color-accent);
+      transition:
+        border-color 0.3s ease,
+        color 0.3s ease;
+
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--color-light);
+        }
+      }
+    }
+
+    .active {
+      color: var(--color-light);
+      border-right: 2px solid var(--color-light);
+
+      a {
+        color: var(--color-light);
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  HERO SECTION                                                              */
+/* -------------------------------------------------------------------------- */
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  text-align: right;
+  position: sticky;
+  top: var(--space-10);
+  height: calc(100vh - 2 * var(--space-10));
+  min-height: calc(100vh - 2 * var(--space-10));
+
+  /* Avatar image setup */
+  .avatar {
+    width: 130px;
+    height: 130px;
+    min-width: 130px;
+    min-height: 130px;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  /* Intro text (title, subtitle, description) */
+  .intro {
+    h1 {
+      font-size: 2.85rem;
+      margin-bottom: var(--space-3);
+    }
+
+    h2 {
+      margin-bottom: var(--space-6a);
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  SECTION: ABOUT                                                            */
+/* -------------------------------------------------------------------------- */
+
+#about {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  padding-top: var(--space-10);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  SECTION: EXPERIENCE                                                       */
+/* -------------------------------------------------------------------------- */
+
+#experience {
+  padding-top: var(--space-9a);
+
+  ul.companies {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8a);
+
+    li small {
+      color: var(--color-light);
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  SECTION: PROJECTS & WORK                                                  */
+/* -------------------------------------------------------------------------- */
+
+#projects,
+#work {
+  padding-top: var(--space-9a);
+
+  ul.project-list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0 0;
+    gap: var(--space-8a);
+
+    img {
+      width: 100px;
+      height: fit-content;
+      margin: var(--space-1a) 0;
+    }
+
+    .thumb {
+      border-radius: 10px;
+      margin: var(--space-1a) 0;
+
+      img {
+        width: 200px;
+        height: fit-content;
+        margin: 0;
+      }
+    }
+
+    li {
+      display: flex;
+      gap: var(--space-7);
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  LOADER OVERLAY                                                            */
+/* -------------------------------------------------------------------------- */
+
+/* Full-page loader overlay */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Simple spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #333;
+  border-top: 5px solid #1e90ff; /* accent color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  FORM MODAL                                                                */
+/* -------------------------------------------------------------------------- */
+
+.modal {
+  background: var(--color-dark2);
+  border-radius: 10px;
+  box-shadow:
+    var(--color-offset-shadow, 0 0 #0000), var(--color-offset-shadow, 0 0 #0000),
+    var(--color-inset-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 40%;
+  height: 100vh;
+  transform: translateX(-20px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0px);
+  }
+
+  .modal-content {
+    padding: var(--space-7);
+    width: 90%;
+    max-width: 550px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: var(--space-5);
+    color: var(--color-light);
+    float: right;
+    cursor: pointer;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  input,
+  textarea {
+    background: var(--color-dark3);
+    border: 1px solid var(--color-dark4);
+    border-radius: 10px;
+    padding: var(--space-3);
+    color: var(--color-light);
+    resize: none;
+    resize: vertical;
+  }
+
+  textarea {
+    min-height: 7.5em;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid #0af;
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  BACKGROUND / VISUALS                                                      */
+/* -------------------------------------------------------------------------- */
+
+#starfield-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  z-index: -1;
+}
+
+/* ========================================================================== */
+/*  RESPONSIVE ENHANCEMENTS                                                   */
+/*  DESCRIPTION: Adapts layout, spacing, and typography across viewports.     */
+/*  NOTE: Mobile-first approach with fluid scaling for better readability.    */
+/* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/*  SMALL DEVICES (max-width: 1024px) - Tablets / Landscape phones            */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1140px) {
+  #main {
+    gap: var(--space-9);
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 0 var(--space-5);
+  }
+
+  #main {
+    flex-direction: column;
+    gap: var(--space-9);
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  header,
+  main {
+    flex: 1 1 100%;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background: var(--color-dark2);
+    border-radius: 0 0 10px 10px;
+    box-shadow:
+      var(--color-offset-shadow, 0 0 rgba(0, 0, 0, 0)),
+      var(--color-offset-shadow, 0 0 rgba(0, 0, 0, 0)), var(--color-inset-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+    margin-left: calc(1rem * -1);
+    margin-right: calc(1rem * -1);
+
+    ul {
+      display: flex;
+      justify-content: center;
+      border-right: none;
+
+      li {
+        border-right: none;
+        border-bottom: 1px solid var(--color-muted);
+        border-right: none !important;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .active {
+        border-bottom: 2px solid var(--color-light);
+      }
+    }
+  }
+
+  #hero {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: auto;
+    text-align: center;
+    gap: var(--space-9);
+
+    .avatar {
+      margin: 0 auto;
+    }
+
+    .intro {
+      max-width: 380px;
+      margin: 0 auto;
+    }
+  }
+
+  footer {
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--color-muted);
+
+    small {
+      display: block;
+      text-align: center;
+      margin-top: var(--space-3);
+    }
+  }
+
+  ul.icons {
+    justify-content: center;
+  }
+
+  .modal {
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  MEDIUM DEVICES (max-width: 768px) - Portrait tablets / Large phones       */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  #hero {
+    gap: var(--space-8);
+  }
+
+  #about,
+  #experience,
+  #projects,
+  #work {
+    padding-top: var(--space-9);
+  }
+
+  ul.pills {
+    li {
+      padding: var(--space-1) var(--space-2);
+    }
+  }
+
+  .button {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #experience ul.companies {
+    gap: var(--space-7);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  SMALL DEVICES (max-width: 480px) - Phones                                 */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 var(--space-3);
+  }
+
+  #hero {
+    gap: var(--space-7);
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  ul.icons {
+    gap: var(--space-3);
+  }
+
+  .buttons {
+    text-align: center;
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "dev-test",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Single page portfolio website for jimboquijano.github.io",
+  "author": "Jimbo Quijano",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "gh-pages": "^6.3.0",
+    "happy-dom": "^20.0.10",
+    "jsdom": "^27.0.1",
+    "prettier": "^3.6.2",
+    "sass-embedded": "^1.93.2",
+    "vite": "^7.1.7",
+    "vitest": "^4.0.4"
+  }
+}
