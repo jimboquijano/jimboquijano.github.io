@@ -231,6 +231,7 @@ footer {
 
 .buttons {
   margin: var(--space-8) 0 0;
+  line-height: 1;
 }
 
 .button {
@@ -336,7 +337,7 @@ ul.pills {
 
 #notes {
   display: block;
-  margin: var(--space-8) 0 0;
+  margin: var(--space-9a) 0 0;
   max-width: 500px;
 }
 
@@ -490,7 +491,7 @@ nav {
 
     .thumb {
       border-radius: 10px;
-      margin: var(--space-1a) 0;
+      margin: var(--space-1a) 0 var(--space-3);
 
       img {
         width: 200px;
