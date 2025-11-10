@@ -103,6 +103,10 @@ export default class FormModal {
       submitBtn.disabled = false
       submitBtn.style.cursor = 'pointer'
       submitTxt.textContent = 'Send Message'
+
+      setTimeout(() => {
+        status.textContent = ''
+      }, 5000)
     })
   }
 }
