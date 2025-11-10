@@ -1,7 +1,7 @@
 /**
  * @file services/ScrollSpy.js
- * @description Handles dynamic navigation highlighting, smooth scrolling, and URL hash updates.
  * @author Jimbo Quijano
+ * @description Handles dynamic navigation highlighting, smooth scrolling, and URL hash updates.
  *
  * ScrollSpy manages active state toggling for navigation links based on the current
  * scroll position, providing users with visual context of which section is in view.
