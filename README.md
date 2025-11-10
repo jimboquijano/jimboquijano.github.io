@@ -31,5 +31,5 @@ A single-page portfolio website showcasing my work, projects, and skills. Built 
 
 - This is **version 0.1.0**, built over a weekend.
 - Updates and improvements will be added soon.
-- Inspired by Brittany Chiang
-- All interactive features are built in vanilla JavaScript.
+- Inspired by Brittany Chiang, thanks Brittany!
+- All interactive features are built in vanilla JavaScript, by yours truly.
