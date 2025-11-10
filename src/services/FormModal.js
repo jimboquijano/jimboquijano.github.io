@@ -51,14 +51,11 @@ export default class FormModal {
   }
 
   /**
-   * Adds listeners to close the modal when clicking the close button
-   * or clicking outside the modal content.
+   * Adds listeners to close the modal when clicking the close button.
    */
   addCloseListeners() {
-    this.closeButton.addEventListener('click', () => this.modal.classList.remove('active'))
-
-    this.modal.addEventListener('click', (e) => {
-      if (e.target === this.modal) this.modal.classList.remove('active')
+    this.closeButton.addEventListener('click', () => {
+      this.modal.classList.remove('active')
     })
   }
 

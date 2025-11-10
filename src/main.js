@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new FormModal({
     modalSelector: '#contactModal',
-    openSelector: ".button[href='#']",
+    openSelector: '.open-contact',
     closeSelector: '#closeModal'
   })
 
