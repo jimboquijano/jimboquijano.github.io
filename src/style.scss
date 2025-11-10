@@ -480,7 +480,7 @@ nav {
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin: 2rem 0 0;
+    margin: var(--space-8) 0 0;
     gap: var(--space-8a);
 
     img {
