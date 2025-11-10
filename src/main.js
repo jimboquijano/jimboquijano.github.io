@@ -9,26 +9,25 @@
 
 import ScrollSpy from './services/ScrollSpy'
 import Starfield from './services/Starfield'
-import ResponsiveNav from './services/ResponsiveNav'
-import Modal from './services/Modal'
+import Responsive from './services/Responsive'
+import FormModal from './services/FormModal'
 import './style.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
   new ScrollSpy('.navs a', 0)
   new Starfield('starfield-bg', 200)
 
-  new ResponsiveNav({
+  new Responsive({
     navSelector: 'nav.navs',
     footerSelector: 'footer',
     mainSelector: '#main',
     breakpoint: 1024
   })
 
-  new Modal({
+  new FormModal({
     modalSelector: '#contactModal',
-    openButtonSelector: ".button[href='#']",
-    closeButtonSelector: '#closeModal',
-    formSelector: '#contactForm'
+    openSelector: ".button[href='#']",
+    closeSelector: '#closeModal'
   })
 
   // Add click behavior to wrappers with links

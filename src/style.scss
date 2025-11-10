@@ -539,7 +539,7 @@ nav {
 /*  FORM MODAL                                                                */
 /* -------------------------------------------------------------------------- */
 
-.modal {
+.form-modal {
   background: var(--color-dark2);
   border-radius: 10px;
   box-shadow:
@@ -611,6 +611,10 @@ nav {
   textarea:focus {
     outline: 2px solid #0af;
     background: rgba(255, 255, 255, 0.15);
+  }
+
+  #status {
+    margin: 0;
   }
 }
 

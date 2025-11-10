@@ -443,15 +443,17 @@
       </div>
 
       <!-- Floating Form Modal -->
-      <div id="contactModal" class="modal">
+      <div id="contactModal" class="form-modal">
         <div class="modal-content">
           <button class="close-btn" id="closeModal">&times;</button>
+
           <h3>Let’s Work Together</h3>
+
           <p>
             <strong>Fill out the form below and I’ll get back to you as soon as possible.</strong>
           </p>
 
-          <form id="contactForm">
+          <form id="contactForm" action="https://formspree.io/f/mzzypqed" method="POST">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your full name" required />
 
@@ -465,6 +467,8 @@
               placeholder="Tell me about your project..."
               required
             ></textarea>
+
+            <p class="form-status"></p>
 
             <div class="buttons">
               <button type="submit" class="button">

@@ -1,14 +1,14 @@
 /**
- * @file services/ResponsiveNav.js
- * @description Handles dynamic repositioning of nav and footer based on viewport width.
+ * @file services/Responsive.js
  * @author Jimbo Quijano
+ * @description Handles dynamic repositioning of nav and footer based on viewport width.
  *
  * Moves the navigation to the top of #main and the footer to the bottom of #main
- * when the viewport width is below 1024px. Restores their original positions above 1024px.
- * Designed to be lightweight, responsive, and easy to integrate.
+ * when the viewport width is below 1024px. Restores their original positions
+ * above 1024px. Designed to be lightweight, responsive, and easy to integrate.
  */
 
-export default class ResponsiveNav {
+export default class Responsive {
   /**
    * @param {Object} options - Configuration options for responsive navigation.
    * @param {string} options.navSelector - CSS selector for the navigation element.
