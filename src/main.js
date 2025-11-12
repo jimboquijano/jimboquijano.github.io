@@ -8,14 +8,19 @@
  */
 
 import ScrollSpy from './services/ScrollSpy'
-import Starfield from './services/Starfield'
+import Starstream from './services/Starstream'
 import Responsive from './services/Responsive'
 import FormModal from './services/FormModal'
 import './style.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
   new ScrollSpy('.navs a', 0)
-  new Starfield('starfield-bg', 200)
+  new Starstream('starstream-bg', {
+    baseColor: 'rgb(15, 23, 42)',
+    defaultSpeed: 4,
+    numStars: 250,
+    minRadius: 0
+  })
 
   new Responsive({
     navSelector: 'nav.navs',
