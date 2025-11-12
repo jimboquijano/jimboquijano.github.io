@@ -653,6 +653,10 @@ nav {
   #main {
     gap: var(--space-9);
   }
+
+  .form-modal {
+    width: 70%;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -744,8 +748,8 @@ nav {
     justify-content: center;
   }
 
-  .modal {
-    width: 100%;
+  .form-modal {
+    width: 80%;
   }
 }
 
@@ -790,6 +794,10 @@ nav {
 
   #experience ul.companies {
     gap: var(--space-7);
+  }
+
+  .form-modal {
+    width: 100%;
   }
 }
 
