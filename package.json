@@ -24,5 +24,8 @@
     "sass-embedded": "^1.93.2",
     "vite": "^7.1.7",
     "vitest": "^4.0.4"
+  },
+  "dependencies": {
+    "starstream": "^1.0.1"
   }
 }

@@ -8,14 +8,15 @@
  */
 
 import ScrollSpy from './services/ScrollSpy'
-import Starstream from './services/Starstream'
 import Responsive from './services/Responsive'
 import FormModal from './services/FormModal'
+import startstream from 'starstream'
 import './style.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
   new ScrollSpy('.navs a', 0)
-  new Starstream('starstream-bg', {
+
+  new startstream('starstream-bg', {
     baseColor: 'rgb(15, 23, 42)',
     defaultSpeed: 4,
     numStars: 250,
